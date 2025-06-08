@@ -9,6 +9,7 @@ const adminRoutes = require('./routes/admin.Route');
 const cookieParser = require('cookie-parser')
 const doctorRoutes = require('./routes/doctor.route');
 const userRoutes = require('./routes/user.route');
+const path = require('path');
 // Initialize Cloudinary
 
 // Connect to MongoDB
@@ -34,6 +35,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+// Static files
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 
 
@@ -46,6 +49,12 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/payment', require('./routes/payment.route'));
+
+
+// All other routes should serve index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 
 
