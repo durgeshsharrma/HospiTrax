@@ -21,7 +21,7 @@ const Login = () => {
 
   const handleToggle = () => {
     setIsLogin(prev => !prev);
-    setFormData({ name: '', email: '', password: '', confirmPassword: '' });
+    setFormData({ name: '', email: '', password: '' });
     setErrorMsg('');
   };
 
@@ -33,8 +33,24 @@ const Login = () => {
     e.preventDefault();
     const { name, email, password } = formData;
 
+
+
+
     if (!email || !password || (!isLogin && (!name))) {
       toast.error('Please fill all required fields' , {autoclose : 3000});
+      return;
+    }
+
+    const isValidPassword = (password) => {
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+      return regex.test(password);
+    };
+
+
+    if (!isLogin && !isValidPassword(password)) {
+      toast.error('Password must be at least 8 characters, include uppercase, lowercase and a number', {
+        autoClose: 3000
+      });
       return;
     }
 
@@ -49,15 +65,15 @@ const Login = () => {
     }).then((res) => {
     
       // setAuthUser(res.data.user);
-      localStorage.setItem('uToken', res.data.uToken);
-      localStorage.setItem('authUser', JSON.stringify(res.data.user));
+      isLogin && localStorage.setItem('uToken', res.data.uToken);
+       isLogin && localStorage.setItem('authUser', JSON.stringify(res.data.user));
       Swal.fire({
-        title: 'Login Successfully',
+        title: isLogin ? 'Login Successful' : 'Registration Successful',
         text: "Welcome Back",
         icon: 'success',
         confirmButtonText: 'Close'
       }).then(() => {
-        window.location.href = '/';
+        isLogin ? window.location.href = '/' : window.location.href = '/login';
       })
       
      

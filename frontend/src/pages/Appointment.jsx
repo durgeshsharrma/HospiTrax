@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import { assets } from '../assets/assets';
 import RelatedDoc from '../components/RelatedDoc';
@@ -12,6 +12,7 @@ const Appointment = () => {
     const { docId } = useParams();
     const { doctors, uToken , userData } = useContext(AppContext);
     const [docInfo, setDocInfo] = useState(null);
+    const navigate = useNavigate()
 
     const [selectedSlot, setSelectedSlot] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
@@ -71,6 +72,14 @@ const Appointment = () => {
                 setBookingConfirmed(false);
                 return;
             }
+        }
+
+        if (!uToken)
+        {
+            setErrorMsg('You must be logged in to book an appointment.');
+            setBookingConfirmed(false);
+            navigate('/login')
+            return
         }
 
         try {
