@@ -17,8 +17,8 @@ module.exports.createCheckoutSession = async (req, res) => {
                 quantity: 1,
             }],
             mode: 'payment',
-            success_url: `http://localhost:5173/payment-success?appointmentId=${appointmentId}`,
-            cancel_url: `http://localhost:5173/payment-cancel`,
+            success_url: `https://hospitrax.onrender.com//payment-success?appointmentId=${appointmentId}`,
+            cancel_url: `https://hospitrax.onrender.com//payment-cancel`,
         });
 
         res.status(200).json({ url: session.url });
