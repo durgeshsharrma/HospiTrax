@@ -26,11 +26,14 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: ['http://localhost:5173/', 'http://localhost:5174/'],
-    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type,Authorization'
-}));
+const corsOptions = {
+    origin: ['http://localhost:5173', 'http://localhost:5174'],  // no trailing slash
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // common headers
+   
+};
+
+app.use(cors(corsOptions));
 
 
 
