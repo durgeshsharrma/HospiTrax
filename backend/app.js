@@ -26,7 +26,8 @@ connectDB();
 
 
 // Middleware
-
+// Static files
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
@@ -37,8 +38,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// Static files
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 
 
 
