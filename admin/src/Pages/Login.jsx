@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post(`${ import.meta.env.VITE_API_URL } /api/${role}/login`, formData);
+            const res = await axios.post(`https://hospitrax-1.onrender.com/api/${role}/login`, formData);
             const { token } = res.data;
 
             // Save token in localStorage
