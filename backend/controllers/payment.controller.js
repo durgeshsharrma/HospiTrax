@@ -1,7 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use env variable in production
 
 module.exports.createCheckoutSession = async (req, res) => {
-    try {t
+    try {
         const { amount, appointmentId } = req.body;
 
         const session = await stripe.checkout.sessions.create({
