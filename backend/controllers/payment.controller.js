@@ -1,8 +1,8 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use env variable in production
-
 module.exports.createCheckoutSession = async (req, res) => {
     try {
         const { amount, appointmentId } = req.body;
+
+        console.log('Received:', { amount, appointmentId });
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -12,7 +12,7 @@ module.exports.createCheckoutSession = async (req, res) => {
                     product_data: {
                         name: 'Doctor Appointment Booking',
                     },
-                    unit_amount: amount * 100, // Amount in paise
+                    unit_amount: amount * 100,
                 },
                 quantity: 1,
             }],
@@ -23,7 +23,7 @@ module.exports.createCheckoutSession = async (req, res) => {
 
         res.status(200).json({ url: session.url });
     } catch (err) {
-        console.error(err);
+        console.error('Stripe Error:', err.message);
         res.status(500).json({ message: 'Stripe session creation failed' });
     }
 };
