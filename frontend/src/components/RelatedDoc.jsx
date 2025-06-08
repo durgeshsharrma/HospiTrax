@@ -17,7 +17,7 @@ const RelatedDoc = ({ speciality, docId }) => {
 
     useEffect(() => {
         if (speciality && docId) fetchRelatedDoctors();
-    })
+    } , [])
 
   return (
       <div className='text-center mb-4'>
