@@ -9,7 +9,6 @@ const adminRoutes = require('./routes/admin.Route');
 const cookieParser = require('cookie-parser')
 const doctorRoutes = require('./routes/doctor.route');
 const userRoutes = require('./routes/user.route');
-const payementRoutes = require('./routes/payment.route')
 // Initialize Cloudinary
 
 // Connect to MongoDB
@@ -24,17 +23,19 @@ connectDB();
 
 
 // Middleware
-
+// Static files
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: ['http://localhost:5173', 'http://localhost:5174'],  // no trailing slash
+    origin: ['https://hospitrax.onrender.com', 'https://hospitraxx.onrender.com'],  // no trailing slash
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // common headers
    
 };
 
 app.use(cors(corsOptions));
+
 
 
 
@@ -46,9 +47,7 @@ app.use(cookieParser()); // Middleware to parse cookies
 app.use('/api/admin', adminRoutes); 
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/payment', payementRoutes)
-
-
+app.use('/api/payment', require('./routes/payment.route'));
 
 
 
