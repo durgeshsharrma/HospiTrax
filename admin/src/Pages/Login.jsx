@@ -26,11 +26,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-<<<<<<< HEAD
             const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/${role}/login`, formData);
-=======
-            const res = await axios.post(`${ import.meta.env.VITE_API_URL }/api/${role}/login`, formData);
->>>>>>> f01c48c (come)
             const { token } = res.data;
 
             // Save token in localStorage
