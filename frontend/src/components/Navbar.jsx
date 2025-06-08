@@ -8,11 +8,11 @@ import { AppContext } from '../context/AppContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { authUser, setAuthUser } = useContext(AppContext)
+  const { authUser, setAuthUser ,  UToken } = useContext(AppContext)
   const { userData, setUserData } = useContext(AppContext)
   console.log(userData, 'i am user data in navbar')
 
-  // const [uToken, setuToken] = useState(true); // Simulate auth
+ 
   const [showDropdown, setShowDropdown] = useState(false);
 
   const navigate = useNavigate();
@@ -91,6 +91,7 @@ const Navbar = () => {
                   localStorage.removeItem('authUser'); // Clear user data
                   setAuthUser(null);
                   setUserData(null)
+                  setUToken(null)
                   setShowDropdown(false);
                 }}
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800 text-sm"
@@ -133,6 +134,7 @@ const Navbar = () => {
                     localStorage.removeItem('authUser'); // Clear user data
                     setAuthUser(null);
                     setIsOpen(false);
+                    setUToken(null)
                   }}
                   className="text-left hover:text-red-500 text-gray-700"
                 >
