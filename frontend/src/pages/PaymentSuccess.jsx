@@ -16,7 +16,7 @@ const PaymentSuccess = () => {
         const markPaid = async () => {
             try {
                 await axios.patch(
-                    `${ import.meta.env.VITE_API_URL } /api/user/mark-paid/${appointmentId}`,
+                    `${ import.meta.env.VITE_API_URL }/api/user/mark-paid/${appointmentId}`,
                   {}, // empty body
                   {
                     headers: {
