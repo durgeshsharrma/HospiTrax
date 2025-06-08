@@ -40,7 +40,7 @@ const Login = () => {
 
     axios({
       method: 'post',
-      url: isLogin ? 'http://localhost:8000/api/user/login' : 'http://localhost:8000/api/user/register',
+      url: isLogin ? `${ import.meta.env.VITE_API_URL }/api/user/login` : `${ import.meta.env.VITE_API_URL }/api/user/register`,
       data: {
         name: isLogin ? undefined : name,
         email,
