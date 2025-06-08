@@ -17,7 +17,7 @@ const MyAppointments = () => {
   const handleCancel = async (appointmentId) => {
     try {
       const res = await axios.put(
-        `${ import.meta.env.VITE_API_URL } /api/user/cancel-appointment/${appointmentId}`,
+        `${ import.meta.env.VITE_API_URL }/api/user/cancel-appointment/${appointmentId}`,
         {},
         {
           headers: {
