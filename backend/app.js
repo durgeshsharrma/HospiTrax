@@ -27,7 +27,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: ['https://hospitrax.onrender.com', 'https://hospitraxx.onrender.com'],  // no trailing slash
+    origin: ['https://hospitrax.onrender.com/', 'https://hospitrax-adminn.onrender.com/'],  // no trailing slash
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // common headers
    
