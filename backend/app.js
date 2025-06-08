@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser')
 const doctorRoutes = require('./routes/doctor.route');
 const userRoutes = require('./routes/user.route');
 const path = require('path');
+const payementRoutes = require('./routes/payment.route')
+
 // Initialize Cloudinary
 
 // Connect to MongoDB
@@ -48,7 +50,7 @@ app.use(cookieParser()); // Middleware to parse cookies
 app.use('/api/admin', adminRoutes); 
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/payment', require('./routes/payment.route'));
+app.use('/api/payment', payementRoutes);
 
 
 // All other routes should serve index.html
