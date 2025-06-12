@@ -23,12 +23,11 @@ connectDB();
 
 
 // Middleware
-// Static files
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: ['https://hospitrax.onrender.com', 'https://hospitraxx.onrender.com'],  // no trailing slash
+    origin: ['http://localhost:5173', 'http://localhost:5174'],  // no trailing slash
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // common headers
    

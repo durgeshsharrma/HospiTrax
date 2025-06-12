@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 
+
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const {setAuthUser} = useContext(AppContext)
@@ -73,6 +74,7 @@ const Login = () => {
         icon: 'success',
         confirmButtonText: 'Close'
       }).then(() => {
+     
         isLogin ? window.location.href = '/' : window.location.href = '/login';
       })
       

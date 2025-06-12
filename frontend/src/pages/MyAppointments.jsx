@@ -133,6 +133,14 @@ const MyAppointments = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {appointments.map((appointment, index) => {
             const doctor = appointment.docId;
+            if (!doctor) {
+              // Prevent crash by skipping or showing a fallback
+              return (
+                <div key={index} className="border p-4 rounded text-red-600 bg-red-50">
+                  <p>Doctor details not found for this appointment.</p>
+                </div>
+              );
+            }
             console.log(doctor , 'me hu doctor ji')
             const dateObj = new Date(appointment.date);
             const dateStr = dateObj.toLocaleDateString('en-US', {

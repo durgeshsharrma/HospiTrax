@@ -55,7 +55,7 @@ const Doctors = () => {
               <img className='border-1 rounded-t-lg  bg-[#eaefff] mb-2' src={item.image} alt="" />
               <div className='flex flex-col self-start p-3'>
                 <div className='mb-2'>
-                  <p className='border pl-3 rounded-full'>{item.availability ? <p className='text-green-700 font-semibold'>Available</p> : <p className='text-red-700 font-semibold'>UnAvailable</p>}</p>
+                  <p className='border pl-3 rounded-full'>{item.availability ? <span className='text-green-700 font-semibold'>Available</span> : <span className='text-red-700 font-semibold'>UnAvailable</span>}</p>
                 </div>
                 <p className='text-lg font-semibold'>{item.name}</p>
                 <p className='text-sm'>{item.speciality}</p>
