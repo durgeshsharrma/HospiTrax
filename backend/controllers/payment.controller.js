@@ -18,7 +18,7 @@ module.exports.createCheckoutSession = async (req, res) => {
                 quantity: 1,
             }],
             mode: 'payment',
-            success_url: https://hospitrax.onrender.com/payment-success?appointmentId=${appointmentId}`,
+            success_url: `https://hospitrax.onrender.com/payment-success?appointmentId=${appointmentId}`,
             cancel_url: `https://hospitrax.onrender.com/payment-cancel`,
         });
 
