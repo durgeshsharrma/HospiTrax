@@ -39,7 +39,7 @@ Hospitrax is a full-stack Hospital Management Web App built using the MERN stack
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/hospitrax.git
+git clone https://github.com/durgeshsharrma/hospiTrax
 cd hospitrax
 
 # Backend
