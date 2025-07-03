@@ -50,4 +50,14 @@ node app.js
 # Frontend
 cd ../frontend
 npm install
-npm run dev 
+npm run dev
+
+
+🌍 Live Demo
+👉 Click Here to View Deployed App
+(https://hospitrax.onrender.com/)
+
+📫 Contact
+Made with ❤️ by Durgesh Sharma
+📧 durgeshshrma14@gmail.com
+ 
